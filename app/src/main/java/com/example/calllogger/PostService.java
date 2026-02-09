@@ -18,7 +18,7 @@ public class PostService extends Service {
                 String number = intent.getStringExtra("number");
                 String state = intent.getStringExtra("state");
 
-                URL url = new URL("http://seninsiten.com/api/receive.php");
+                URL url = new URL("http://localhost/cidweb_post/receive.php");
                 HttpURLConnection c = (HttpURLConnection) url.openConnection();
                 c.setRequestMethod("POST");
                 c.setDoOutput(true);
@@ -47,4 +47,5 @@ public class PostService extends Service {
         return null;
     }
 }
+
 
