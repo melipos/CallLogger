@@ -1,4 +1,4 @@
-package com.example.calllistener;
+package com.example.calllogger;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -18,3 +18,4 @@ public class CallReceiver extends BroadcastReceiver {
         context.startForegroundService(svc);
     }
 }
+
