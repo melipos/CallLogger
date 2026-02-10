@@ -1,11 +1,18 @@
-
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
+    ext {
+        kotlin_version = '1.8.22'
+        compose_version = '1.5.2' // Eğer Compose kullanmayacaksan bunu silebilirsin
+    }
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:8.2.2")
+        classpath 'com.android.tools.build:gradle:8.2.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
     }
 }
 
@@ -14,4 +21,15 @@ allprojects {
         google()
         mavenCentral()
     }
+
+    // Duplicate class sorunlarını önlemek için zorla Kotlin stdlib sürümünü kullan
+    configurations.all {
+        resolutionStrategy {
+            force "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }
