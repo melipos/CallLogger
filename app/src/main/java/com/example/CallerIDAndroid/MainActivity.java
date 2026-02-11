@@ -40,14 +40,17 @@ public class MainActivity extends AppCompatActivity {
         // -----------------------------
 
         // Test butonuna basınca TCP gönder
-        btnSendTest.setOnClickListener(v -> {
-            String number = editNumber.getText().toString().trim();
-            if(!number.isEmpty()) {
-                sendNumberToDelphi(number);
-                Toast.makeText(this, "Numara gönderildi: " + number, Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Numara boş!", Toast.LENGTH_SHORT).show();
-            }
+        //btnSendTest.setOnClickListener(v -> {
+        //    String number = editNumber.getText().toString().trim();
+        //    if(!number.isEmpty()) {
+        //        sendNumberToDelphi(number);
+        //        Toast.makeText(this, "Numara gönderildi: " + number, Toast.LENGTH_SHORT).show();
+        //    } else {
+        //        Toast.makeText(this, "Numara boş!", Toast.LENGTH_SHORT).show();
+        //    }
+
+        btnSendTest.setOnClickListener(v -> sendNumberToDelphi("08505320372"));
+            
         });
 
         // Overlay izni kontrolü
@@ -108,3 +111,4 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 }
+
