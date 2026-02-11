@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnSendTest;
 
     // Delphi PC IP ve port
-    private static final String DELPHI_IP = "192.168.1.100";
+    private static final String DELPHI_IP = "192.168.1.12"; // LAN IP
     private static final int DELPHI_PORT = 20000;
 
     @Override
@@ -31,13 +31,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // EditText ve Button referansları
         editNumber = findViewById(R.id.editNumber);
         btnSendTest = findViewById(R.id.btnSendTest);
 
-        // Test butonuna tıklayınca gönder
+        // Test butonuna basınca TCP gönder
         btnSendTest.setOnClickListener(v -> {
-            String number = editNumber.getText().toString();
-            if(number != null && !number.isEmpty()) {
+            String number = editNumber.getText().toString().trim();
+            if(!number.isEmpty()) {
                 sendNumberToDelphi(number);
                 Toast.makeText(this, "Numara gönderildi: " + number, Toast.LENGTH_SHORT).show();
             } else {
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // Accessibility izinleri kullanıcıya yönlendir
+        // Accessibility izinleri kontrolü
         if(!isAccessibilityServiceEnabled()) {
             Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
             startActivity(intent);
@@ -103,5 +104,3 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 }
-
-
