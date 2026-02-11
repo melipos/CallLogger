@@ -8,10 +8,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,13 +31,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // EditText ve Button referansları
         editNumber = findViewById(R.id.editNumber);
         btnSendTest = findViewById(R.id.btnSendTest);
 
-        // IME actionları yutarak karakter yazarken otomatik tetiklemeyi engelle
-        editNumber.setOnEditorActionListener((TextView v, int actionId, android.view.KeyEvent event) -> true);
+        // -----------------------------
+        // ÖNEMLİ: TextWatcher veya addTextChangedListener yok!
+        // -----------------------------
 
-        // Butona basınca TCP gönder
+        // Test butonuna basınca TCP gönder
         btnSendTest.setOnClickListener(v -> {
             String number = editNumber.getText().toString().trim();
             if(!number.isEmpty()) {
@@ -108,4 +108,3 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 }
-
