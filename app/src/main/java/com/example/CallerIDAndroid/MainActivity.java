@@ -14,7 +14,7 @@ import com.example.CallerIDAndroid.R;
 public class MainActivity extends AppCompatActivity {
 
     // Delphi PC IP adresi ve port
-    private static final String DELPHI_IP = "192.168.1.100"; // kendi PC LAN IP
+    private static final String DELPHI_IP = "192.168.1.12"; // kendi PC LAN IP
     private static final int DELPHI_PORT = 20000;
 
     @Override
@@ -55,4 +55,5 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 }
+
 
