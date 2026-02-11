@@ -8,6 +8,9 @@ import android.widget.Toast;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+// Kendi projenin R sınıfı
+import com.example.CallerIDAndroid.R;
+
 public class MainActivity extends AppCompatActivity {
 
     // Delphi PC IP adresi ve port
@@ -52,3 +55,4 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 }
+
