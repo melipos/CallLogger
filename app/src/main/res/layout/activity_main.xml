@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="16dp"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <TextView
-        android:text="CallerIDAndroid Service Çalışıyor"
-        android:textSize="20sp"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/editNumber"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"/>
+        android:hint="Numara girin"
+        android:inputType="phone"/>
 
-<Button
-    android:id="@+id/btnSendTest"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Test Gönder"
-    android:layout_centerInParent="true"/>
-
+    <Button
+        android:id="@+id/btnSendTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Numarayı Gönder"
+        android:layout_marginTop="16dp"/>
 </LinearLayout>
-
