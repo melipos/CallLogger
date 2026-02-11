@@ -1,44 +1,54 @@
 package com.example.CallerIDAndroid;
 
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.Button;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+import java.io.PrintWriter;
+import java.net.Socket;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String MELIPOS_IP = "192.168.1.12"; // kendi IP
-    private static final int MELIPOS_PORT = 20000;             // kendi port
+    // Delphi PC IP adresi ve port
+    private static final String DELPHI_IP = "192.168.1.100"; // kendi PC LAN IP
+    private static final int DELPHI_PORT = 20000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnTest = findViewById(R.id.btnTestSend);
-        btnTest.setOnClickListener(v -> sendTestNumber("5551234567")); // test numarası
+        // Buton oluştur veya layout’da ekli buton
+        Button btnSendTest = findViewById(R.id.btnSendTest);
+
+        btnSendTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendTestNumber("5551234567"); // test numarası
+            }
+        });
     }
 
-    private void sendTestNumber(String phoneNumber) {
+    // TCP client ile numara gönder
+    private void sendTestNumber(final String number) {
         new Thread(() -> {
             try {
-                String urlStr = "http://" + MELIPOS_IP + ":" + MELIPOS_PORT + "/melipos?number=" + phoneNumber;
-                URL url = new URL(urlStr);
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setRequestMethod("GET");
-                int code = conn.getResponseCode();
-                Log.d("TEST_SEND", "Response code: " + code);
-                conn.disconnect();
+                Socket socket = new Socket(DELPHI_IP, DELPHI_PORT);
+                PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+                out.println(number); // numarayı gönder
+                socket.close();
+
+                runOnUiThread(() ->
+                        Toast.makeText(MainActivity.this, "Numara gönderildi", Toast.LENGTH_SHORT).show()
+                );
+
             } catch (Exception e) {
-                Log.e("TEST_SEND", "Error sending test number", e);
+                e.printStackTrace();
+                runOnUiThread(() ->
+                        Toast.makeText(MainActivity.this, "Hata: " + e.getMessage(), Toast.LENGTH_LONG).show()
+                );
             }
         }).start();
     }
 }
-
-
