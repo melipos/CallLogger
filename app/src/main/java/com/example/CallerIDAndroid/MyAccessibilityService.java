@@ -14,7 +14,7 @@ import com.example.CallerIDAndroid.R;
 
 public class MyAccessibilityService extends AccessibilityService {
 
-    private static final String DELPHI_IP = "192.168.1.100"; // Delphi PC IP
+    private static final String DELPHI_IP = "192.168.1.12"; // Delphi PC IP
     private static final int DELPHI_PORT = 20000;
 
     @Override
@@ -74,4 +74,5 @@ public class MyAccessibilityService extends AccessibilityService {
         // Servis kesilirse buraya düşer
     }
 }
+
 
