@@ -1,4 +1,4 @@
-package com.example.CallerIDAndroid;
+package com.example.CallerID;
 
 import android.accessibilityservice.AccessibilityService;
 import android.util.Log;
@@ -9,7 +9,7 @@ import java.net.Socket;
 import java.util.List;
 
 // Kendi projenin R sınıfı
-import com.example.CallerIDAndroid.R;
+import com.example.CallerID.R;
 
 
 public class MyAccessibilityService extends AccessibilityService {
@@ -74,5 +74,6 @@ public class MyAccessibilityService extends AccessibilityService {
         // Servis kesilirse buraya düşer
     }
 }
+
 
 
