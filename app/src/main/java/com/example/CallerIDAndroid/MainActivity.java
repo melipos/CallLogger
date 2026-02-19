@@ -1,7 +1,7 @@
-package com.example.CallerIDAndroid;
+package com.example.CallerID;
 
 // Kendi projenin R sınıfı
-import com.example.CallerIDAndroid.R;
+import com.example.CallerID.R;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -111,5 +111,6 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 }
+
 
 
