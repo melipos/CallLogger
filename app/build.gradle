@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.CallerIDAndroid'
+    namespace 'com.example.CallerID'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.example.CallerIDAndroid"
+        applicationId "com.example.CallerID"
         minSdk 21
         targetSdk 34
         versionCode 1
